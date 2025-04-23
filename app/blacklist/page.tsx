@@ -266,6 +266,14 @@ export default function BlacklistPage() {
             receive or access to land-based venues.
           </p>
           <p>
+            If you encounter issues with this tool or have other questions,
+            please{" "}
+            <Link href="/contact" className="underline">
+              contact us
+            </Link>
+            .
+          </p>
+          <p>
             If you need immediate help, please contact a{" "}
             <Link
               href="/resources/seeking-help#helplines"
