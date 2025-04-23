@@ -76,8 +76,9 @@ export function Header() {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.3, delay: 0.1 * index + 0.3 }}
                   >
-                    <Link href={link.href} legacyBehavior passHref>
+                    <Link href={link.href}>
                       <NavigationMenuLink
+                        asChild
                         className={cn(
                           navigationMenuTriggerStyle(),
                           "bg-transparent hover:bg-transparent focus:bg-transparent",
