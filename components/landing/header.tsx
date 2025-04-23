@@ -23,6 +23,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Separator } from "@/components/ui/separator";
 
 // Adjusted navLinks structure if needed, or use directly
 const sectionLinks = [
@@ -165,28 +166,63 @@ export function Header() {
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
-              <div className="grid gap-4 py-6">
-                <SheetClose asChild>
-                  <Link href="/" className="flex items-center space-x-2 mb-4">
-                    <span className="text-lg font-semibold">BetStop</span>
-                  </Link>
-                </SheetClose>
-                {[...sectionLinks, ...resources].map((link) => (
-                  <SheetClose asChild key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="flex w-full items-center py-2 text-lg font-semibold text-foreground hover:text-primary"
-                    >
-                      {link.title}
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] p-0">
+              <div className="flex h-full flex-col">
+                <div className="p-6">
+                  <SheetClose asChild>
+                    <Link href="/" className="flex items-center space-x-2 mb-4">
+                      <span className="text-xl font-semibold">BetStop</span>
                     </Link>
                   </SheetClose>
-                ))}
-                <SheetClose asChild>
-                  <Button asChild className="mt-4 w-full">
-                    <Link href="/blacklist">Start Blacklisting</Link>
-                  </Button>
-                </SheetClose>
+                  <Separator />
+                </div>
+
+                <nav className="flex-grow px-6 space-y-2">
+                  <p className="text-sm font-medium text-muted-foreground px-0 pb-1">
+                    Navigate
+                  </p>
+                  {sectionLinks.map((link) => (
+                    <SheetClose asChild key={link.href}>
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          "flex w-full items-center rounded-md px-3 py-2 text-base font-medium",
+                          "text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                        )}
+                      >
+                        {link.title}
+                      </Link>
+                    </SheetClose>
+                  ))}
+
+                  <Separator className="my-4" />
+
+                  <p className="text-sm font-medium text-muted-foreground px-0 pb-1">
+                    Resources
+                  </p>
+                  {resources.map((link) => (
+                    <SheetClose asChild key={link.href}>
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          "flex w-full items-center rounded-md px-3 py-2 text-base font-medium",
+                          "text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                        )}
+                      >
+                        {link.title}
+                      </Link>
+                    </SheetClose>
+                  ))}
+                </nav>
+
+                <div className="mt-auto p-6">
+                  <Separator className="mb-4" />
+                  <SheetClose asChild>
+                    <Button asChild className="w-full">
+                      <Link href="/blacklist">Start Blacklisting</Link>
+                    </Button>
+                  </SheetClose>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
